@@ -1,0 +1,15 @@
+.title {
+  text-align: center;
+}
+
+.jokeList {
+  padding: 0 50px;
+  max-height: calc(100vh - 78px - 20px);
+  overflow: scroll;
+  margin: 0 auto;
+  width: 700px;
+}
+
+.buttons {
+  text-align: center;
+}
