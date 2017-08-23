@@ -25,11 +25,6 @@ function* handleFetchJoke(action) {
   yield put(addJoke(data.value));
 }
 
-function* handleClearLocalJokes(action) {
-  localStorage.removeItem("jokes");
-  yield put(clearLocalJokes());
-}
-
 export default function* sagas() {
     yield takeEvery(FETCH_JOKE, handleFetchJoke);
 }

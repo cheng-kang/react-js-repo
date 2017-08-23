@@ -32,6 +32,7 @@ export default (state = {...INITIAL_STATE}, action = {}) => {
           jokes
       };
     case CLEAR_LOCAL_JOKES:
+      localStorage.removeItem("jokes");
       return {
           ...state,
           jokes: []
