@@ -8,11 +8,16 @@ export const CLEAR_LOCAL_JOKES = 'CLEAR_LOCAL_JOKES';
 
 // actions
 export const fetchJoke = createAction(FETCH_JOKE);
-export const fetchJokeFailed = createAction(FETCH_JOKE_FAILED);
 export const clearLocalJokes = createAction(CLEAR_LOCAL_JOKES);
+export function fetchJokeFailed(errorMsg) {
+  return {
+    type: FETCH_JOKE_FAILED,
+    errorMsg
+  }
+};
 export function addJoke(joke) {
   return {
     type: ADD_JOKE,
-    payload: joke
+    joke
   }
-}
+};

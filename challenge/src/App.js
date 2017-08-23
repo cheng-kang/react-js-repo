@@ -40,12 +40,15 @@ class App extends Component {
   }
 
   render() {
-    const { jokes, isLoading } = this.props
+    const { jokes, isLoading, errorMsg } = this.props
     return (
       <div className="App">
         <h1 className="title">Jokes</h1>
         <div className="jokeList">
           {this._renderJokes()}
+        </div>
+        <div className={errorMsg === '' ? 'errorMsg inactive' : 'errorMsg'}>
+          {errorMsg}
         </div>
         <div className="buttons">
           <button onClick={this.handleLoadJoke.bind(this)} disabled={isLoading}>
@@ -61,10 +64,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  let { jokes, isLoading } = state;
+  let { jokes, isLoading, errorMsg } = state;
   return {
     jokes,
-    isLoading
+    isLoading,
+    errorMsg
   }
 }
 export default connect(

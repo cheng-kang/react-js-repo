@@ -1,10 +1,8 @@
-import { takeEvery, put, call, fork } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import { 
   FETCH_JOKE,
-  CLEAR_LOCAL_JOKES,
   fetchJokeFailed,
-  addJoke,
-  clearLocalJokes
+  addJoke
 } from '../actions';
 
 function runFetchJoke() {
@@ -18,9 +16,13 @@ function runFetchJoke() {
 function* handleFetchJoke(action) {
   const { data, e } = yield call(runFetchJoke);
   
-  if (e !== undefined || data.type !== 'success') {
-      yield put(fetchJokeFailed());
-      return
+  if (e !== undefined) {
+    yield put(fetchJokeFailed('Unable to load new joke, please check your network connection.'));
+    return
+  }
+
+  if (data.type !== 'success') {
+    yield put(fetchJokeFailed('Sorry, the joker teller is currently not available.'));
   }
   yield put(addJoke(data.value));
 }
