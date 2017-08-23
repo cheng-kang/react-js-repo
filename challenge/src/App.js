@@ -6,7 +6,6 @@ import './App.css'
 class App extends Component {
 
   _renderJokes() {
-    console.log(this.props);
     let { jokes } = this.props;
     let list = [];
     if (jokes.length === 0) {
